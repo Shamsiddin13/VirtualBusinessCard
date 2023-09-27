@@ -72,6 +72,7 @@ namespace VirtualBusinessCard.Data.Repositories
                 if (data.Id == entity.Id)
                 {
                     await InsertAsync(entity);
+                    await DeleteAsync(data.Id);
                 }
                 await InsertAsync(data);
             }

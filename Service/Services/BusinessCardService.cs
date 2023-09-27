@@ -16,16 +16,20 @@ public class BusinessCardService : IBusinessCardService
     {
         var businessCard = (await businessCardRepository.SelectAllAsync())
             .FirstOrDefault(b =>
-            b.UserId == dto.UserId);
+            b.Address == dto.Address);
         if (businessCard != null)
             throw new VirtualBusinessCardException(409, "BusinessCard is already exist");
 
+        await GenerateIdAsync();
         BusinessCard newbusinessCard = new BusinessCard()
         {
             Id = _id,
-            UserId = dto.UserId,
             Title = dto.Title,
             Company = dto.Company,
+            Website = dto.Website,
+            Address = dto.Address,
+            ImageUrl = dto.ImageUrl,
+            Description = dto.Description,
             CreatedAt = DateTime.UtcNow,
         };
         await businessCardRepository.InsertAsync(newbusinessCard);
@@ -36,6 +40,10 @@ public class BusinessCardService : IBusinessCardService
             UserId = newbusinessCard.UserId,
             Title = newbusinessCard.Title,
             Company = newbusinessCard.Company,
+            Website = newbusinessCard.Website,
+            Address = newbusinessCard.Address,
+            ImageUrl = newbusinessCard.ImageUrl,
+            Description = newbusinessCard.Description,
         };
 
         return result;
@@ -68,6 +76,10 @@ public class BusinessCardService : IBusinessCardService
                 UserId = businessCard.UserId,
                 Title = businessCard.Title,
                 Company = businessCard.Company,
+                Website = businessCard.Website,
+                Address = businessCard.Address,
+                ImageUrl = businessCard.ImageUrl,
+                Description = businessCard.Description,
             };
             mappedBusinessCards.Add(dto);
         }
@@ -86,6 +98,10 @@ public class BusinessCardService : IBusinessCardService
             UserId = businessCard.UserId,
             Title = businessCard.Title,
             Company = businessCard.Company,
+            Website = businessCard.Website,
+            Address = businessCard.Address,
+            ImageUrl = businessCard.ImageUrl,
+            Description = businessCard.Description,
         };
 
         return result;
@@ -110,9 +126,12 @@ public class BusinessCardService : IBusinessCardService
         var mappedBusinessCard = new BusinessCard()
         {
             Id = dto.Id,
-            UserId = dto.UserId,
             Title = dto.Title,
             Company = dto.Company,
+            Website = dto.Website,
+            Address = dto.Address,
+            ImageUrl = dto.ImageUrl,
+            Description = dto.Description,
             UpdateAt = DateTime.UtcNow
         };
         await businessCardRepository.UpdateAsync(mappedBusinessCard);
@@ -122,7 +141,11 @@ public class BusinessCardService : IBusinessCardService
             Id = mappedBusinessCard.Id,
             UserId = mappedBusinessCard.UserId,
             Title = mappedBusinessCard.Title,
-            Company = mappedBusinessCard.Company
+            Company = mappedBusinessCard.Company,
+            Website = mappedBusinessCard.Website,
+            Address = mappedBusinessCard.Address,
+            ImageUrl = mappedBusinessCard.ImageUrl,
+            Description = mappedBusinessCard.Description,
         };
 
         return result;

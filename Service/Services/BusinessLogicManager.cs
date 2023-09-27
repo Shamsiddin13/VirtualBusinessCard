@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace VirtualBusinessCard.Service.Services;
 
-namespace VirtualBusinessCard.Service.Services
+public class BusinessLogicManager
 {
-    internal class BusinessLogicManager
-    {
-    }
+
 }

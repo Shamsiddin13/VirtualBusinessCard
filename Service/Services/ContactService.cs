@@ -1,10 +1,9 @@
 ﻿using VirtualBusinessCard.Service.DTOs.Contact;
-using VirtualBusinessCard.Service.Exceptions;
 using VirtualBusinessCard.Data.IRepositories;
+using VirtualBusinessCard.Service.Exceptions;
 using VirtualBusinessCard.Service.Interfaces;
 using VirtualBusinessCard.Data.Repositories;
 using VirtualBusinessCard.Domain.Entities;
-using VirtualBusinessCard.Service.DTOs.User;
 
 namespace VirtualBusinessCard.Service.Services;
 
@@ -21,13 +20,14 @@ public class ContactService : IContactService
         if (contact != null)
             throw new VirtualBusinessCardException(409, "Contact is already exist");
 
+        await GenerateIdAsync();
         Contact newContact = new Contact()
         {
             Id = _id,
-            Name = dto.Name,
             Email = dto.Email,
-            BusinessCardId = dto.BusinessCardId,
+            //BusinessCardId = dto.BusinessCardId,
             PhoneNumber = dto.PhoneNumber,
+            JobTitle = dto.JobTitle,
             CreatedAt = DateTime.UtcNow,
         };
         await contactRepository.InsertAsync(newContact);
@@ -35,9 +35,9 @@ public class ContactService : IContactService
         var result = new ContactForResultDto()
         {
             Id = _id,
-            Name = newContact.Name,
             Email = newContact.Email,
             BusinessCardId = newContact.BusinessCardId,
+            JobTitle = newContact.JobTitle,
             PhoneNumber = newContact.PhoneNumber,
         };
 
@@ -67,9 +67,9 @@ public class ContactService : IContactService
         {
             ContactForResultDto dto = new ContactForResultDto()
             {
-                Id= contact.Id,
-                Name = contact.Name,
+                Id = contact.Id,
                 Email = contact.Email,
+                JobTitle = contact.JobTitle,
                 PhoneNumber = contact.PhoneNumber,
                 BusinessCardId = contact.BusinessCardId,
             };
@@ -87,8 +87,8 @@ public class ContactService : IContactService
         var result = new ContactForResultDto()
         {
             Id = contact.Id,
-            Name = contact.Name,
             Email = contact.Email,
+            JobTitle = contact.JobTitle,
             PhoneNumber = contact.PhoneNumber,
             BusinessCardId = contact.BusinessCardId,
         };
@@ -115,10 +115,10 @@ public class ContactService : IContactService
         var mappedContact = new Contact()
         {
             Id = dto.Id,
-            Name = dto.Name,
             Email = dto.Email,
-            BusinessCardId = dto.BusinessCardId,
+            //BusinessCardId = dto.BusinessCardId,
             PhoneNumber = dto.PhoneNumber,
+            JobTitle = dto.JobTitle,
             UpdateAt = DateTime.UtcNow
         };
         await contactRepository.UpdateAsync(mappedContact);
@@ -126,8 +126,8 @@ public class ContactService : IContactService
         var result = new ContactForResultDto()
         {
             Id = mappedContact.Id,
-            Name = mappedContact.Name,
             Email = mappedContact.Email,
+            JobTitle = mappedContact.JobTitle,
             BusinessCardId = mappedContact.BusinessCardId,
             PhoneNumber = mappedContact.PhoneNumber,
         };

@@ -1,9 +1,9 @@
-﻿using VirtualBusinessCard.Service.Exceptions;
-using VirtualBusinessCard.Data.IRepositories;
-using VirtualBusinessCard.Data.Repositories;
+﻿using VirtualBusinessCard.Data.IRepositories;
 using VirtualBusinessCard.Service.Interfaces;
-using VirtualBusinessCard.Domain.Entities;
+using VirtualBusinessCard.Service.Exceptions;
 using VirtualBusinessCard.Service.DTOs.User;
+using VirtualBusinessCard.Data.Repositories;
+using VirtualBusinessCard.Domain.Entities;
 
 namespace VirtualBusinessCard.Service.Services;
 
@@ -18,7 +18,7 @@ public class UserService : IUserService
             u.Password.ToLower() == dto.Password.ToLower());
         if (user != null)
             throw new VirtualBusinessCardException(409, "User is already exist");
-
+        await GenerateIdAsync();
         User newUser = new User()
         {
             Id = _id,
@@ -59,10 +59,11 @@ public class UserService : IUserService
         return mappedUsers;
     }
 
-    public async Task<UserForResultDto> GetById(long id)
+    public async Task<UserForResultDto> GetByIdAsync(long id)
     {
         var user = await userRepository.SelectByIdAsync(id);
         if (user is null)
+
             throw new VirtualBusinessCardException(404, "User is not found");
 
         var result = new UserForResultDto()

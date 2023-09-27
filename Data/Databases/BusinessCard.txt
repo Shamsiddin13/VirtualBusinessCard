@@ -1,1 +1,14 @@
-﻿
+[
+  {
+    "UserId": 0,
+    "Title": "salom ",
+    "Company": "Haad LC",
+    "Website": "haad.uz",
+    "Address": "tashkent",
+    "ImageUrl": "https//www.haad//images/salom.png",
+    "Description": "hayrli kun",
+    "Id": 1,
+    "CreatedAt": "2023-09-27T09:53:15.6172067Z",
+    "UpdateAt": null
+  }
+]

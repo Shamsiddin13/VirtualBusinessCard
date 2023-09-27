@@ -1,11 +1,38 @@
 [
   {
     "BusinessCardId": 2,
-    "Name": "Shamsiddin",
-    "PhoneNumber": "998914995906",
     "Email": "shamsiddin13@gmail.com",
+    "PhoneNumber": "998914995906",
+    "JobTitle": null,
     "Id": 1,
     "CreatedAt": "2023-09-26T13:17:16.1539732+05:00",
+    "UpdateAt": null
+  },
+  {
+    "BusinessCardId": 2,
+    "Email": "shamsiddin13@gmail.com",
+    "PhoneNumber": "998914995906",
+    "JobTitle": null,
+    "Id": 1,
+    "CreatedAt": "2023-09-27T12:54:54.7318707+05:00",
+    "UpdateAt": null
+  },
+  {
+    "BusinessCardId": 2,
+    "Email": "shamsiddin13@gmail.com",
+    "PhoneNumber": "998914995906",
+    "JobTitle": null,
+    "Id": 1,
+    "CreatedAt": "2023-09-27T12:55:14.7545448+05:00",
+    "UpdateAt": null
+  },
+  {
+    "BusinessCardId": 0,
+    "Email": "salom",
+    "PhoneNumber": "salom",
+    "JobTitle": "sadasd",
+    "Id": 2,
+    "CreatedAt": "2023-09-27T09:53:42.8419307Z",
     "UpdateAt": null
   }
 ]
