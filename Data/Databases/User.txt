@@ -14,5 +14,13 @@
     "Id": 2,
     "CreatedAt": "2023-09-27T08:39:14.2028176Z",
     "UpdateAt": null
+  },
+  {
+    "FirstName": "Sardor",
+    "LastName": "Mamadaliyev",
+    "Password": "sardor2810_check",
+    "Id": 3,
+    "CreatedAt": "2023-09-27T11:34:52.3815484Z",
+    "UpdateAt": null
   }
 ]

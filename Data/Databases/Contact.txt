@@ -34,5 +34,14 @@
     "Id": 2,
     "CreatedAt": "2023-09-27T09:53:42.8419307Z",
     "UpdateAt": null
+  },
+  {
+    "BusinessCardId": 0,
+    "Email": "shamsiddinumarov0013@gmail.com",
+    "PhoneNumber": "+998914995906",
+    "JobTitle": "Backend Devoleper",
+    "Id": 3,
+    "CreatedAt": "2023-09-27T11:36:10.3991159Z",
+    "UpdateAt": null
   }
 ]

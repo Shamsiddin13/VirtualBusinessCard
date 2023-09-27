@@ -11,13 +11,22 @@ public class UserService : IUserService
 {
     private long _id;
     private readonly IRepository<User> userRepository = new Repository<User>();
+    ValidationService validation = new ValidationService();
+
     public async Task<UserForResultDto> CreateAsync(UserForCreationDto dto)
     {
-        var user = (await userRepository.SelectAllAsync())
-            .FirstOrDefault(u =>
-            u.Password.ToLower() == dto.Password.ToLower());
-        if (user != null)
-            throw new VirtualBusinessCardException(409, "User is already exist");
+        if (validation.IsValidPassword(dto.Password))
+        {
+            var user = (await userRepository.SelectAllAsync())
+                .FirstOrDefault(u =>
+                u.Password.ToLower() == dto.Password.ToLower());
+            if (user != null)
+                throw new VirtualBusinessCardException(409, "User is already exist");
+        }
+        else
+        {
+            throw new VirtualBusinessCardException(112, "IsValidPassword pass not");
+        }
         await GenerateIdAsync();
         User newUser = new User()
         {

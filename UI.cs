@@ -314,11 +314,11 @@ public class UI
                 case 1:
                     ContactForCreationDto contactForCreationDto = new ContactForCreationDto();
 
-                    Console.WriteLine("Enter the JobTitle");
+                    Console.WriteLine("Enter the PhoneNumber");
                     contactForCreationDto.PhoneNumber = Console.ReadLine();
-                    Console.WriteLine("Enter the Companty");
+                    Console.WriteLine("Enter the Email");
                     contactForCreationDto.Email = Console.ReadLine();
-                    Console.WriteLine("Enter the Website");
+                    Console.WriteLine("Enter the JobTitle");
                     contactForCreationDto.JobTitle = Console.ReadLine();
 
                     var resultDto = contactService.CreateAsync(contactForCreationDto).Result;
@@ -327,9 +327,9 @@ public class UI
 
                     Console.WriteLine("User Id: " + resultDto.Id);
                     Console.WriteLine("User BusinnessCardId: " + resultDto.BusinessCardId);
-                    Console.WriteLine("User UserId: " + resultDto.PhoneNumber);
-                    Console.WriteLine("User JobTitle: " + resultDto.Email);
-                    Console.WriteLine("User Company: " + resultDto.JobTitle);
+                    Console.WriteLine("User PhoneNumber: " + resultDto.PhoneNumber);
+                    Console.WriteLine("User Email: " + resultDto.Email);
+                    Console.WriteLine("User JobTitle: " + resultDto.JobTitle);
          
                     Console.WriteLine();
 
@@ -338,22 +338,15 @@ public class UI
                     Console.WriteLine("Enter the Id");
                     long id = long.Parse(Console.ReadLine());
                     var result = contactService.GetByIdAsync(id).Result;
-                    if (result != null)
-                    {
                         Console.WriteLine();
 
                         Console.WriteLine("User Id: " + result.Id);
                         Console.WriteLine("User BusinnessCardId: " + result.BusinessCardId);
-                        Console.WriteLine("User UserId: " + result.PhoneNumber);
-                        Console.WriteLine("User JobTitle: " + result.Email);
-                        Console.WriteLine("User Company: " + result.JobTitle);
+                        Console.WriteLine("User PhoneNumber: " + result.PhoneNumber);
+                        Console.WriteLine("User Email: " + result.Email);
+                        Console.WriteLine("User JobTitle: " + result.JobTitle);
 
                         Console.WriteLine();
-                    }
-                    else
-                    {
-                        Console.WriteLine("User is not found");
-                    }
                     break;
                 case 3:
                     foreach (var item in contactService.GetAllAsync().Result)
@@ -362,9 +355,9 @@ public class UI
 
                         Console.WriteLine("User Id: " + item.Id);
                         Console.WriteLine("User BusinnessCardId: " + item.BusinessCardId);
-                        Console.WriteLine("User UserId: " + item.PhoneNumber);
-                        Console.WriteLine("User JobTitle: " + item.Email);
-                        Console.WriteLine("User Company: " + item.JobTitle);
+                        Console.WriteLine("User PhoneNumber: " + item.PhoneNumber);
+                        Console.WriteLine("User Email: " + item.Email);
+                        Console.WriteLine("User JobTitle: " + item.JobTitle);
 
                         Console.WriteLine();
                     }
@@ -380,11 +373,11 @@ public class UI
 
                     Console.WriteLine("Enter the Id");
                     contactForUpdateDto.Id = long.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter the JobTitle");
+                    Console.WriteLine("Enter the PhoneNumber");
                     contactForUpdateDto.PhoneNumber = Console.ReadLine();
-                    Console.WriteLine("Enter the Companty");
+                    Console.WriteLine("Enter the Email");
                     contactForUpdateDto.Email = Console.ReadLine();
-                    Console.WriteLine("Enter the Website");
+                    Console.WriteLine("Enter the JobTitle");
                     contactForUpdateDto.JobTitle = Console.ReadLine();
 
                     var resultDtos = contactService.UpdateAsync(contactForUpdateDto).Result;
@@ -393,9 +386,9 @@ public class UI
 
                     Console.WriteLine("User Id: " + resultDtos.Id);
                     Console.WriteLine("User BusinnessCardId: " + resultDtos.BusinessCardId);
-                    Console.WriteLine("User UserId: " + resultDtos.PhoneNumber);
-                    Console.WriteLine("User JobTitle: " + resultDtos.Email);
-                    Console.WriteLine("User Company: " + resultDtos.JobTitle);
+                    Console.WriteLine("User PhoneNumber: " + resultDtos.PhoneNumber);
+                    Console.WriteLine("User Email: " + resultDtos.Email);
+                    Console.WriteLine("User JobTitle: " + resultDtos.JobTitle);
 
                     Console.WriteLine();
 

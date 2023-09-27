@@ -11,14 +11,21 @@ public class ContactService : IContactService
 {
     private long _id;
     private readonly IRepository<Contact> contactRepository = new Repository<Contact>();
-
+    ValidationService validation = new ValidationService();
     public async Task<ContactForResultDto> CreateAsync(ContactForCreationDto dto)
     {
-        var contact = (await contactRepository.SelectAllAsync())
-            .FirstOrDefault(c =>
-            c.Email.ToLower() == dto.Email.ToLower());
-        if (contact != null)
-            throw new VirtualBusinessCardException(409, "Contact is already exist");
+        if (validation.IsValidEmail(dto.Email.ToLower()) == true)
+        {
+            var contact = (await contactRepository.SelectAllAsync())
+                .FirstOrDefault(c =>
+                c.Email.ToLower() == dto.Email.ToLower());
+            if (contact != null)
+                throw new VirtualBusinessCardException(409, "Contact is already exist");
+        }
+        else
+        {
+            throw new VirtualBusinessCardException(111, "IsValidation not in");
+        }
 
         await GenerateIdAsync();
         Contact newContact = new Contact()
@@ -43,6 +50,7 @@ public class ContactService : IContactService
 
         return result;
     }
+
 
     public async Task GenerateIdAsync()
     {
